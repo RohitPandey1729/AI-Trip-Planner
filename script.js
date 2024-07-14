@@ -1,4 +1,4 @@
-function getItinerary() {
-  console.log("hello there!")
-
+function getItinerary(event) {
+  event.preventDefault()
+  console.log("Hello there")
 }

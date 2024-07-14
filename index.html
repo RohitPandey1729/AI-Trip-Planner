@@ -9,10 +9,16 @@
 </head>
 
 <body>
-  <input type="text" name="location" />
-  <input type="date" name="myUniqueName" />
-
   <script src="script.js"></script>
+  <form>
+    <input type="text" name="location" />
+    <input name="startdate" type="date">
+    <input name="enddate" type="date">
+    <input type="submit" value="Submit" />
+    <form onsubmit="getItinerary(event)">
+  </form>
+
+  
 </body>
 
 </html>
