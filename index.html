@@ -9,16 +9,17 @@
 </head>
 
 <body>
+  Hello world
   <script src="script.js"></script>
-  <form>
+
+  <form onsubmit="getItinerary(event)">
     <input type="text" name="location" />
     <input name="startdate" type="date">
     <input name="enddate" type="date">
     <input type="submit" value="Submit" />
-    <form onsubmit="getItinerary(event)">
   </form>
-
   
+  <div id="eventlist"></div>
 </body>
 
 </html>
