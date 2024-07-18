@@ -1,21 +1,25 @@
-function getItinerary(event) {
+  function getItinerary(e) {
 
-  event.preventDefault()
+  e.preventDefault()
 
-  console.log(event.target.location.value);
-  console.log(event.target.startdate.value);
-  console.log(event.target.enddate.value);
+  console.log(e.target.location.value)
 
-  console.log("Hello there")
   fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
-      //optional, meant for security checks (authentication)
       headers: {
-        ...
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer OPEN_AI_API_KEY'
       },
-      //NOT needed with GET request
+
       body: JSON.stringify({
-       ...
+          'model': 'gpt-3.5-turbo',
+          'messages': [{
+              'role': 'user',
+              'content': `plan a trip itinerary for someone going to ${e.target.location.value} from ${e.target.startdate.value} to ${e.target.enddate.value}. have about 3 or 4 things to do per day. respond ONLY with an array that has JSON objects with the parameters \`date\` \`eventTitle\` \`startTime\` \`endTime\`
+        \`\`\`
+        `
+          }],
       })
-  })
-}
+  }).then(result => result.json()).then(eventsResponse => {
+
+      const events = JSON.parse(eventsResponse.
