@@ -5,6 +5,7 @@
   console.log(e.target.location.value)
 
   fetch('https://api.openai.com/v1/chat/completions', {
+    
       method: 'POST',
       headers: {
           'Content-Type': 'application/json',
@@ -22,4 +23,14 @@
       })
   }).then(result => result.json()).then(eventsResponse => {
 
-      const events = JSON.parse(eventsResponse.
+      const events = JSON.parse(eventsResponse.[0].message.content)
+      let htmlGenerated = ""
+          for (const event of events) {
+              //add it on
+              htmlGenerated += `<div>
+        <h3>${event.eventTitle}</h3>
+        <p>${new Date(event.date).toLocaleDateString(undefined, {dateStyle: "medium" })}</p>
+
+        <p>${event.startTime} - ${event.endTime}</p>
+
+        </div>`
