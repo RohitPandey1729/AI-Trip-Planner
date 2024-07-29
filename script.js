@@ -39,5 +39,14 @@ function getItinerary(e) {
     }
 
     document.getElementById("eventlist").innerHTML = htmlGenerated
+    let posts;
+
+function iterateOverPosts() {
+  if (posts) {
+    posts.map((post) => console.log(post.title))
+  } else {
+    // Handle the case where posts is null or undefined
+  }
+}
   });
 }
